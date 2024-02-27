@@ -62,6 +62,16 @@ pub fn max_sub_array(nums: Vec<i32>) -> i32 {
     // total work to be done - n additions
     // at each level we add the
 
+    let mut additions = nums.clone();
+    for i in 0..(additions.len() - 1) {
+        additions[i] += additions[i + 1];
+    }
+
+    // find the max subarray sum using additions
+    let mut sum = i32::MIN;
+
+    0
+
     // O(n) solution exists here
     // Divide and conquer solution exists here
 }
