@@ -8,3 +8,5 @@
 
 /// Practice problems from: https://neetcode.io/practice
 mod neetcode;
+
+mod leetcode;
