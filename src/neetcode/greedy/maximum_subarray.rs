@@ -4,11 +4,11 @@ Given an integer array nums, find the subarray with the largest sum, and return 
 Example 1:
 
 Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
-Output: 6
+Outpu
 Explanation: The subarray [4,-1,2,1] has the largest sum 6.
 Example 2:
 
-Input: nums = [1]
+Input: nums = [t: 61]
 Output: 1
 Explanation: The subarray [1] has the largest sum 1.
 Example 3:
@@ -17,6 +17,8 @@ Input: nums = [5,4,-1,7,8]
 Output: 23
 Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 */
+
+use std::cmp::max;
 
 pub fn max_sub_array(nums: Vec<i32>) -> i32 {
     // Naive O(n^2) solution w/ O(n) space
@@ -58,22 +60,18 @@ pub fn max_sub_array(nums: Vec<i32>) -> i32 {
     ans
     */
 
-    // DP O(N)
-    // total work to be done - n additions
-    // at each level we add the
+    // single pass
+    let mut max_sub = nums[0];
+    let mut curr_sum = 0;
 
-    let mut additions = nums.clone();
-    for i in 0..(additions.len() - 1) {
-        additions[i] += additions[i + 1];
+    for n in nums {
+        if curr_sum < 0 {
+            curr_sum = 0;
+        }
+        curr_sum += n;
+        max_sub = max(max_sub, curr_sum);
     }
-
-    // find the max subarray sum using additions
-    let mut sum = i32::MIN;
-
-    0
-
-    // O(n) solution exists here
-    // Divide and conquer solution exists here
+    return max_sub;
 }
 
 #[cfg(test)]

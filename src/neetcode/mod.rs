@@ -1,5 +1,10 @@
 mod arrays_hashing;
 mod binary_search;
+mod bit_manipulation;
+mod dynamic_1d;
+mod dynamic_2d;
 mod graphs;
 mod greedy;
+mod intervals;
+mod trees;
 mod two_pointers;
