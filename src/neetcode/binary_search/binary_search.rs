@@ -41,7 +41,7 @@ pub fn search(nums: Vec<i32>, target: i32) -> i32 {
         if old_curr == curr {
             return -1;
         }
-    } 
+    }
 }
 
 mod test {
@@ -49,8 +49,8 @@ mod test {
 
     #[test]
     fn test() {
-        assert_eq!(search(vec![-1,0,3,5,9,12], 9), 4);
-        assert_eq!(search(vec![-1,0,3,5,9,12], 2), -1);
+        assert_eq!(search(vec![-1, 0, 3, 5, 9, 12], 9), 4);
+        assert_eq!(search(vec![-1, 0, 3, 5, 9, 12], 2), -1);
         assert_eq!(search(vec![5], 5), 0);
         assert_eq!(search(vec![2, 5], 5), 1);
     }

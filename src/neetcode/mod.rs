@@ -5,6 +5,8 @@ mod dynamic_1d;
 mod dynamic_2d;
 mod graphs;
 mod greedy;
+mod heap_priority_queue;
 mod intervals;
 mod trees;
 mod two_pointers;
+mod backtracking;
