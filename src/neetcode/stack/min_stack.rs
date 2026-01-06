@@ -1,0 +1,73 @@
+/*
+Design a stack class that supports the push, pop, top, and getMin operations.
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+Each function should run in
+O
+(
+    1
+    )
+    O(1) time.
+
+    Example 1:
+
+    Input: ["MinStack", "push", 1, "push", 2, "push", 0, "getMin", "pop", "top", "getMin"]
+
+    Output: [null,null,null,null,0,null,2,1]
+
+    Explanation:
+    MinStack minStack = new MinStack();
+    minStack.push(1);
+    minStack.push(2);
+    minStack.push(0);
+    minStack.getMin(); // return 0
+    minStack.pop();
+    minStack.top();    // return 2
+    minStack.getMin(); // return 1
+    Constraints:
+
+    -2^31 <= val <= 2^31 - 1.
+    pop, top and getMin will always be called on non-empty stacks.
+)
+*/
+
+// at every element in the stack, keep track of what the minimum is
+
+struct MinStack {
+    stack: Vec<(i32, i32)>,
+}
+
+impl MinStack {
+    fn new() -> Self {
+        MinStack { stack: Vec::new() }
+    }
+
+    fn push(&mut self, val: i32) {
+        let min = if let Some(&(_, current_min)) = self.stack.last() {
+            if val < current_min {
+                val
+            } else {
+                current_min
+            }
+        } else {
+            val
+        };
+        self.stack.push((val, min));
+    }
+
+    fn pop(&mut self) {
+        self.stack.pop();
+    }
+
+    fn top(&self) -> i32 {
+        self.stack.last().unwrap().0
+    }
+
+    fn get_min(&self) -> i32 {
+        self.stack.last().unwrap().1
+    }
+}

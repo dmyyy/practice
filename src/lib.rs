@@ -2,7 +2,7 @@
     future_incompatible,
     nonstandard_style,
     rust_2018_idioms,
-    clippy::pedantic
+    // clippy::pedantic
 )]
 #![allow(dead_code)]
 

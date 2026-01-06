@@ -1,4 +1,5 @@
 mod arrays_hashing;
+mod backtracking;
 mod binary_search;
 mod bit_manipulation;
 mod dynamic_1d;
@@ -7,6 +8,9 @@ mod graphs;
 mod greedy;
 mod heap_priority_queue;
 mod intervals;
+mod linked_list;
+mod math_geometry;
+mod stack;
 mod trees;
+mod tries;
 mod two_pointers;
-mod backtracking;

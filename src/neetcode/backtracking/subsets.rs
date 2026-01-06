@@ -19,21 +19,81 @@ Constraints:
 -10 <= nums[i] <= 10
 */
 
+// new uncommitted lines here!!
+
+// TODO: do this
+
+// fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
+//     todo!()
+// }
+
 fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
-    let mut res: Vec<Vec<i32>> = Vec::new();
-    for subset_size in 0..nums.len() {
-        subsets_helper(subset_size, vec![], &nums, &mut res);
+    let n = nums.len();
+    let mut result = Vec::new();
+
+    for mask in 0..(1 << n) {
+        let mut subset = Vec::new();
+        for i in 0..n {
+            if (mask & (1 << i)) != 0 {
+                subset.push(nums[i]);
+            }
+        }
+        result.push(subset);
     }
 
-    todo!();
+    result
 }
 
-// oof this one kinda hard for me even though it shouldn't imo - will need to read the answer later
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-fn subsets_helper(subset_size: usize, subset: Vec<i32>, nums: &Vec<i32>, res: &mut Vec<Vec<i32>>) {
-    if subset.len() == subset_size {
-        res.push(subset);
-    } else {
-        if 
+    #[test]
+    fn test_empty() {
+        let input = vec![];
+        let mut output = subsets(input);
+        let mut expected = vec![vec![]];
+        output.sort();
+        expected.sort();
+        assert_eq!(output, expected);
+    }
+
+    #[test]
+    fn test_single_element() {
+        let input = vec![1];
+        let mut output = subsets(input);
+        let mut expected = vec![vec![], vec![1]];
+        output.sort();
+        expected.sort();
+        assert_eq!(output, expected);
+    }
+
+    #[test]
+    fn test_two_elements() {
+        let input = vec![1, 2];
+        let mut output = subsets(input);
+        let mut expected = vec![vec![], vec![1], vec![2], vec![1, 2]];
+        output.sort();
+        expected.sort();
+        assert_eq!(output, expected);
+    }
+
+    #[test]
+    fn test_three_elements() {
+        let input = vec![1, 2, 3];
+        let mut output = subsets(input);
+        let mut expected = vec![
+            vec![],
+            vec![1],
+            vec![2],
+            vec![3],
+            vec![1, 2],
+            vec![1, 3],
+            vec![2, 3],
+            vec![1, 2, 3],
+        ];
+        output.sort();
+        expected.sort();
+        assert_eq!(output, expected);
     }
 }

@@ -30,5 +30,14 @@ Output: [
 */
 
 fn rotate(matrix: Vec<Vec<u32>>) {
-    // 
+    let n = matrix.len();
+    for i in 0..n {
+        // rotate n - 1 steps along the outside
+    }
+    for (i, row) in matrix.iter().enumerate() {
+        // rotate n - 1 steps along the outside
+        let temp = matrix[i][0];
+
+        // matrix[i][matrix[i].len()] = ;
+    }
 }

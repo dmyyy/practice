@@ -45,7 +45,7 @@ pub fn search(nums: Vec<i32>, target: i32) -> i32 {
 }
 
 mod test {
-    use super::*;
+    use super::search;
 
     #[test]
     fn test() {

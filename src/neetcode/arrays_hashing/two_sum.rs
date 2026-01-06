@@ -25,7 +25,6 @@ Input: nums = [5,5], target = 10
 Output: [0,1]
 */
 
-use std::i32::MAX;
 
 fn two_sum(nums: Vec<i32>, target: i32) -> [usize; 2] {
     for i in 0..nums.len() {
