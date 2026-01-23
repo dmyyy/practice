@@ -10,6 +10,7 @@ mod heap_priority_queue;
 mod intervals;
 mod linked_list;
 mod math_geometry;
+mod sliding_window;
 mod stack;
 mod trees;
 mod tries;

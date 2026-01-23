@@ -25,16 +25,30 @@ Input: nums = [5,5], target = 10
 Output: [0,1]
 */
 
+use std::collections::HashMap;
 
 fn two_sum(nums: Vec<i32>, target: i32) -> [usize; 2] {
-    for i in 0..nums.len() {
-        for j in (i + 1)..nums.len() {
-            if nums[i] + nums[j] == target {
-                return [i, j];
-            }
+    // for i in 0..nums.len() {
+    //     for j in (i + 1)..nums.len() {
+    //         if nums[i] + nums[j] == target {
+    //             return [i, j];
+    //         }
+    //     }
+    // }
+
+    // complement -> index
+    let mut num_map: HashMap<usize, usize> = HashMap::default();
+    for (i, n) in nums.into_iter().enumerate() {
+        let n = n as usize;
+        let complement = target as usize - n;
+
+        if num_map.contains_key(&n) {
+            return [num_map[&n], i];
         }
+        num_map.insert(complement, i);
     }
-    unreachable!("invalid input");
+
+    unreachable!();
 }
 
 #[cfg(test)]

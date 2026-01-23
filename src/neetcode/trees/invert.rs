@@ -31,7 +31,7 @@ fn invert_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNod
 
 fn invert_tree_helper(root: Option<Rc<RefCell<TreeNode>>>) {
     if let Some(root_node) = root {
-        root_node.into_inner().left.replace()
+        // root_node.into_inner().left.replace()
     }
 }
 
