@@ -21,4 +21,21 @@ Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
 */
 
-fn max_profit(prices: Vec<i32>) -> i32 {}
+use std::cmp::max;
+
+fn max_profit(prices: Vec<i32>) -> i32 {
+    let mut buy_idx = 0;
+    let mut sell_idx = 1;
+    let mut max_profit = 0;
+    while sell_idx < prices.len() {
+        if prices[buy_idx] < prices[sell_idx] {
+            let profit = prices[sell_idx] - prices[buy_idx];
+            max_profit = max(profit, max_profit);
+        } else {
+            // found new low
+            buy_idx = sell_idx;
+        }
+        sell_idx += 1;
+    }
+    max_profit
+}

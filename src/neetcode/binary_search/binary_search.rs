@@ -16,7 +16,7 @@ Output: -1
 Explanation: 2 does not exist in nums so return -1
 */
 
-pub fn search(nums: Vec<i32>, target: i32) -> i32 {
+fn search(nums: Vec<i32>, target: i32) -> i32 {
     if nums.is_empty() {
         return -1;
     }
@@ -41,6 +41,16 @@ pub fn search(nums: Vec<i32>, target: i32) -> i32 {
         if old_curr == curr {
             return -1;
         }
+    }
+}
+
+// using std built-in
+
+fn search2(nums: Vec<i32>, target: i32) -> i32 {
+    if let Ok(idx) = nums.binary_search(&target) {
+        idx as i32
+    } else {
+        -1
     }
 }
 

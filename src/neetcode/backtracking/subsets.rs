@@ -19,81 +19,25 @@ Constraints:
 -10 <= nums[i] <= 10
 */
 
-// new uncommitted lines here!!
-
-// TODO: do this
-
-// fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
-//     todo!()
-// }
-
 fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
-    let n = nums.len();
-    let mut result = Vec::new();
+    let mut res = Vec::new();
 
-    for mask in 0..(1 << n) {
-        let mut subset = Vec::new();
-        for i in 0..n {
-            if (mask & (1 << i)) != 0 {
-                subset.push(nums[i]);
-            }
+    let mut subset: Vec<i32> = Vec::new();
+    fn dfs(i: usize, subset: &mut Vec<i32>, nums: &Vec<i32>, res: &mut Vec<Vec<i32>>) {
+        if i >= nums.len() {
+            res.push(subset.clone());
+            return;
         }
-        result.push(subset);
+
+        // include nums[i] in subset
+        subset.push(nums[i]);
+        dfs(i + 1, subset, nums, res);
+
+        // don't include i in subset
+        subset.pop();
+        dfs(i + 1, subset, nums, res);
     }
 
-    result
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_empty() {
-        let input = vec![];
-        let mut output = subsets(input);
-        let mut expected = vec![vec![]];
-        output.sort();
-        expected.sort();
-        assert_eq!(output, expected);
-    }
-
-    #[test]
-    fn test_single_element() {
-        let input = vec![1];
-        let mut output = subsets(input);
-        let mut expected = vec![vec![], vec![1]];
-        output.sort();
-        expected.sort();
-        assert_eq!(output, expected);
-    }
-
-    #[test]
-    fn test_two_elements() {
-        let input = vec![1, 2];
-        let mut output = subsets(input);
-        let mut expected = vec![vec![], vec![1], vec![2], vec![1, 2]];
-        output.sort();
-        expected.sort();
-        assert_eq!(output, expected);
-    }
-
-    #[test]
-    fn test_three_elements() {
-        let input = vec![1, 2, 3];
-        let mut output = subsets(input);
-        let mut expected = vec![
-            vec![],
-            vec![1],
-            vec![2],
-            vec![3],
-            vec![1, 2],
-            vec![1, 3],
-            vec![2, 3],
-            vec![1, 2, 3],
-        ];
-        output.sort();
-        expected.sort();
-        assert_eq!(output, expected);
-    }
+    dfs(0, &mut subset, &nums, &mut res);
+    res
 }

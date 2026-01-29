@@ -1,32 +1,25 @@
-// /*
-// You are given an m x n integer matrix matrix with the following two properties:
+/*
+You are given an m x n 2-D integer array matrix and an integer target.
 
-//     Each row is sorted in non-decreasing order.
-//     The first integer of each row is greater than the last integer of the previous row.
+Each row in matrix is sorted in non-decreasing order.
+The first integer of every row is greater than the last integer of the previous row.
+Return true if target exists within matrix or false otherwise.
 
-// Given an integer target, return true if target is in matrix or false otherwise.
+Can you write a solution that runs in O(log(m * n)) time?
 
-// You must write a solution in O(log(m * n)) time complexity.
-// */
-// pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
-//     // O(log(m * n))
-//     // O(log(m) + log(n))
+Example 1:
 
-//     // binary search over first element in each row to determine what row
-//     // binary search over row to find if element exists in the row
+Input: matrix = [[1,2,4,8],[10,11,12,13],[14,20,30,40]], target = 10
 
-//     // matrix.binary_search(x)
+Output: true
+Example 2:
 
-//     // let m =
+Input: matrix = [[1,2,4,8],[10,11,12,13],[14,20,30,40]], target = 15
 
-//     false
-// }
+Output: false
+*/
 
-// mod test {
-//     // use super::*;
-
-//     #[test]
-//     fn test() {
-//         todo!();
-//     }
-// }
+pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+    let list: Vec<i32> = matrix.into_iter().flatten().collect();
+    list.binary_search(&target).is_ok()
+}

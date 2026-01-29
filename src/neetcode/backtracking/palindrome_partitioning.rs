@@ -12,7 +12,16 @@ Output: [["a"]]
 
 */
 
-pub fn partition(s: String) -> Vec<Vec<String>> {
+fn partition(s: String) -> Vec<Vec<String>> {
+    let mut partitions = Vec::new();
+    let mut candidates = Vec::new();
+
+    backtrack(&s, &mut partitions, &mut candidates, 0);
+
+    partitions
+}
+
+pub fn partition2(s: String) -> Vec<Vec<String>> {
     let mut partitions = Vec::new();
     let mut candidates = Vec::new();
 
