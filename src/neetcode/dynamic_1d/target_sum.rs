@@ -22,7 +22,7 @@ Explanation: There are 3 different ways to sum the input numbers to get a sum of
 use std::collections::HashMap;
 
 fn find_target_sum_ways(nums: Vec<i32>, target: i32) -> i32 {
-    fn ts(
+    fn target_sum_ways(
         sum: i32,
         target: i32,
         idx: usize,
@@ -36,14 +36,14 @@ fn find_target_sum_ways(nums: Vec<i32>, target: i32) -> i32 {
             let c_plus = if let Some(&c) = cache.get(&(sum, idx, '+')) {
                 c
             } else {
-                let c = ts(sum + nums[idx], target, idx + 1, nums, cache);
+                let c = target_sum_ways(sum + nums[idx], target, idx + 1, nums, cache);
                 cache.insert((sum, idx, '+'), c);
                 c
             };
             let c_minus = if let Some(&c) = cache.get(&(sum, idx, '-')) {
                 c
             } else {
-                let c = ts(sum - nums[idx], target, idx + 1, nums, cache);
+                let c = target_sum_ways(sum - nums[idx], target, idx + 1, nums, cache);
                 cache.insert((sum, idx, '-'), c);
                 c
             };
@@ -52,7 +52,7 @@ fn find_target_sum_ways(nums: Vec<i32>, target: i32) -> i32 {
     }
     // (sum, idx, op) -> num. combinations
     let mut cache: HashMap<(i32, usize, char), i32> = HashMap::new();
-    ts(0, target, 0, &nums, &mut cache)
+    target_sum_ways(0, target, 0, &nums, &mut cache)
 }
 
 #[cfg(test)]

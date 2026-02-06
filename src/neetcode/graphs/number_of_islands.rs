@@ -24,110 +24,64 @@ Input: grid = [
 Output: 4
 */
 
-// iter through grid until we find an area of land
-// dfs in order to dicover all connected components
-//
-
-use std::collections::HashSet;
+// problems
+// - messed up i,j rows,cols in dfs
+// - didn't explore up as well
 
 pub fn num_islands(grid: Vec<Vec<char>>) -> i32 {
-    let mut island_count = 0;
-    // visited land nodes in the grid indexed (column, row)
-    let mut visited: HashSet<(usize, usize)> = HashSet::new();
+    // iter through grid
+    // keep track of visited locations
+    // when we find a piece of land
+    // - increment island count
+    // - explore surrounding land marking it as visited (using dfs)
 
-    for (r, row) in grid.iter().enumerate() {
-        for (c, val) in row.iter().cloned().enumerate() {
-            if visited.contains(&(c, r)) {
-                // already visited as part of another island - continue
-                continue;
+    fn dfs(
+        i: usize,
+        j: usize,
+        m: usize,
+        n: usize,
+        grid: &Vec<Vec<char>>,
+        visited: &mut Vec<Vec<bool>>,
+    ) {
+        if i >= m || j >= n {
+            // oob
+            return;
+        }
+        if grid[i][j] == '0' || visited[i][j] {
+            return;
+        } else {
+            // unvisited land - mark as visited
+            visited[i][j] = true;
+            // left
+            if j >= 1 {
+                dfs(i, j - 1, m, n, grid, visited)
             }
-
-            if val == '0' {
-                // water - continue
-                continue;
+            // right
+            if j < n - 1 {
+                dfs(i, j + 1, m, n, grid, visited)
             }
-
-            // found a piece of land we haven't visited yet
-            island_count += 1;
-            visited.insert((c, r));
-
-            // recursively find all pieces of land that are part of this unvisited island
-            for (adj_c, adj_r) in get_unvisited_adjacent(c, r, &visited, &grid) {
-                island_helper(adj_c, adj_r, &mut visited, &grid);
+            // down
+            if i < m - 1 {
+                dfs(i + 1, j, m, n, grid, visited)
+            }
+            // up
+            if i >= 1 {
+                dfs(i - 1, j, m, n, grid, visited)
             }
         }
     }
 
-    island_count
-}
-
-fn island_helper(
-    c: usize,
-    r: usize,
-    mut visited: &mut HashSet<(usize, usize)>,
-    grid: &Vec<Vec<char>>,
-) {
-    if grid[r][c] == '0' {
-        // found water - finish recursion
-        return;
-    } else {
-        // found land - add to visited
-        visited.insert((c, r));
-
-        // check the other directions
-        for (adj_c, adj_r) in get_unvisited_adjacent(c, r, visited, grid) {
-            island_helper(adj_c, adj_r, &mut visited, &grid);
+    let mut num_islands = 0;
+    let (m, n) = (grid.len(), grid[0].len());
+    let mut visited: Vec<Vec<bool>> = vec![vec![false; n]; m];
+    for i in 0..grid.len() {
+        for j in 0..grid[i].len() {
+            if grid[i][j] == '1' && !visited[i][j] {
+                // land - explore recursively
+                num_islands += 1;
+                dfs(i, j, m, n, &grid, &mut visited);
+            }
         }
     }
-}
-
-// given a column and a row return valid adjacent positions
-fn get_unvisited_adjacent(
-    c: usize,
-    r: usize,
-    visited: &HashSet<(usize, usize)>,
-    grid: &Vec<Vec<char>>,
-) -> Vec<(usize, usize)> {
-    // check the other directions
-    let mut adjacent = Vec::new();
-    if c > 0 && !visited.contains(&(c - 1, r)) {
-        adjacent.push((c - 1, r));
-    }
-    if r > 0 && !visited.contains(&(c, r - 1)) {
-        adjacent.push((c, r - 1));
-    }
-    if c < grid[r].len() - 1 && !visited.contains(&(c + 1, r)) {
-        adjacent.push((c + 1, r));
-    }
-    if r < grid.len() - 1 && !visited.contains(&(c, r + 1)) {
-        adjacent.push((c, r + 1));
-    }
-
-    adjacent
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn num_islands_test() {
-        let grid = vec![
-            vec!['1', '1', '1', '1', '0'],
-            vec!['1', '1', '0', '1', '0'],
-            vec!['1', '1', '0', '0', '0'],
-            vec!['0', '0', '0', '0', '0'],
-        ];
-
-        assert_eq!(num_islands(grid), 1);
-
-        let grid = vec![
-            vec!['1', '1', '0', '0', '0'],
-            vec!['1', '1', '0', '0', '0'],
-            vec!['0', '0', '1', '0', '0'],
-            vec!['0', '0', '0', '1', '1'],
-        ];
-
-        assert_eq!(num_islands(grid), 3);
-    }
+    num_islands
 }

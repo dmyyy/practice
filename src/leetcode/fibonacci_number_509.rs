@@ -8,12 +8,16 @@
 
 use std::collections::HashMap;
 
-fn fib(mut n: u32) -> u32 {
+fn fib(mut n: i32) -> i32 {
+    if n == 0 {
+        return 0;
+    }
+
     let mut memo = HashMap::new();
     fib_helper(n, &mut memo)
 }
 
-fn fib_helper(mut n: u32, memo: &mut HashMap<u32, u32>) -> u32 {
+fn fib_helper(mut n: i32, memo: &mut HashMap<i32, i32>) -> i32 {
     if let Some(&val) = memo.get(&n) {
         return val;
     }

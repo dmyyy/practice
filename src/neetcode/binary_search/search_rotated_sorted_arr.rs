@@ -23,26 +23,21 @@ Output: -1
 
 fn search(mut nums: Vec<i32>, target: i32) -> i32 {
     // find partition point
-    let (mut l, mut r) = (0, 0);
+    let (mut l, mut r) = (0, nums.len() - 1);
     while l < r {
-        if nums[l] <= nums[r] {
-            break;
-        }
-
-        let m = l + (l - r) / 2;
-
-        if nums[m] >= nums[l] {
+        let m = l + (r - l) / 2;
+        if nums[m] > nums[r] {
             l = m + 1;
         } else {
             r = m;
         }
     }
 
-    // rotate left by partition point
     nums.rotate_left(l);
 
     if let Ok(i) = nums.binary_search(&target) {
-        return nums[i];
+        let idx = (i + l) % nums.len();
+        return idx as i32;
     }
     -1
 }

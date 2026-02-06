@@ -17,50 +17,16 @@ Input: intervals = [(5,8),(9,15)]
 Output: true
 */
 
-use std::cmp::Ordering;
+// fn can_attend_meetings(intervals:Vec<Vec<i32>>)
 
-#[derive(Eq, PartialEq, PartialOrd)]
-struct Interval {
-    start: u32,
-    end: u32,
-}
+fn can_attend_meetings(mut intervals: Vec<Vec<i32>>) -> bool {
+    // sort by start time
+    intervals.sort_by(|a, b| a[0].cmp(&b[0]));
 
-impl Interval {
-    pub fn new(start: u32, end: u32) -> Self {
-        if start > end {
-            panic!("tried to create interval where start > end");
-        }
-        Self { start, end }
-    }
-}
-
-impl Ord for Interval {
-    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        if self.end < other.start {
-            return Ordering::Less;
-        } else if self.start > other.end {
-            return Ordering::Greater;
-        } else {
-           return Ordering::Equal;
+    for i in 0..intervals.len() {
+        if i + 1 < intervals.len() && intervals[i][1] > intervals[i + 1][0] {
+            return false;
         }
     }
-}
-
-fn can_attend_meetings(mut intervals: Vec<Interval>) -> bool {
-    // does any interval overlap with any other interval?
-
-    // brute force o n^2 solution compare every possible interval w/ each other
-    // sort all intervals -> do a single pass
-
-    intervals.sort();
-
-    for i in 0..(intervals.len() - 1) {
-        if intervals {
-
-        } 
-    for interval in intervals {
-
-    } 
-
-    todo!()
+    true
 }
