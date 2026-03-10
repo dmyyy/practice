@@ -21,22 +21,35 @@ Input: nums = [2,1,2,1,0]
 Output: 2
 */
 
+// - core idea behind greedy: do the best thing we can do at every turn
+// - wtf it worked first try - took me a little bit though..
+
 fn jump(nums: Vec<i32>) -> i32 {
-    // greedy approach
-    let (mut l, mut r) = (0, 0);
-    let mut jump_count = 0;
-    while r < nums.len() {
-        // all the places we can possibly jump
-        r = nums[l] as usize;
-        let mut max_idx = 0;
-        for idx in (l + 1)..=(l + r) {
-            if idx < nums.len() {
-                max_idx = std::cmp::max(max_idx, nums[idx] as usize);
+    // to avoid annoying casting
+    let nums: Vec<usize> = nums.into_iter().map(|i| i as usize).collect();
+
+    let mut num_jumps = 0;
+    let mut curr_idx = 0;
+    // nums guaranteed to be of at least length 1
+    while curr_idx != nums.len() - 1 {
+        let mut next_idx = curr_idx;
+        let mut max_next_idx = 0;
+        for maybe_next_idx in (curr_idx + 1)..=(curr_idx + nums[curr_idx]) {
+            if maybe_next_idx == nums.len() - 1 {
+                // can already exit on the current jump!
+                return num_jumps + 1;
+            }
+            // choose next_idx that maximizes the next furthest jump
+            let maybe_next_jump_len = nums[maybe_next_idx];
+            let maybe_next_max_idx = maybe_next_idx + maybe_next_jump_len;
+            if maybe_next_max_idx > max_next_idx {
+                // new max
+                max_next_idx = maybe_next_max_idx;
+                next_idx = maybe_next_idx;
             }
         }
-        jump_count += 1;
-        l = r + max_idx;
+        num_jumps += 1;
+        curr_idx = next_idx;
     }
-
-    todo!()
+    return num_jumps;
 }
