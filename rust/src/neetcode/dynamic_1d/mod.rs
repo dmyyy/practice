@@ -9,3 +9,4 @@ mod how_sum;
 mod longest_palindromic_substring;
 mod min_cost_climbing_stairs;
 mod target_sum;
+mod fib_tab;
