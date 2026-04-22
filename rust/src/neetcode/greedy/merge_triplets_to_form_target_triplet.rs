@@ -29,15 +29,15 @@ Explanation: Perform the following operations:
 The target triplet [5,5,5] is now an element of triplets.
 */
 
-/// More doc comments!!
 use std::cmp::max;
 
-const ABCDEFKJFDKJFD_KFJDKFJD: f64 = 42.0;
+// TODO: not done yet
 
 fn merge_triplets(triplets: Vec<Vec<i32>>, target: Vec<i32>) -> bool {
     // this does really stand out... which is what I want I guess?
     // xx
     //  jfkdjkfdjkfjdka fdjka kfda
+    false
 }
 
 fn update_triplets(i: usize, j: usize, triplets: &mut Vec<Vec<i32>>) {

@@ -1,6 +1,11 @@
+mod all_construct;
+mod best_sum;
+mod can_construct;
 mod climbing_stairs;
+mod count_construct;
 mod house_robber;
 mod house_robber_2;
+mod how_sum;
+mod longest_palindromic_substring;
 mod min_cost_climbing_stairs;
 mod target_sum;
-mod longest_palindromic_substring;

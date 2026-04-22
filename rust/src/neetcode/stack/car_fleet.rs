@@ -80,7 +80,7 @@ fn car_fleet(target: i32, mut position: Vec<i32>, mut speed: Vec<i32>) -> i32 {
         }
 
         // check how many car_fleets we have
-        let moving_cars = &cars.clone()[0..num_moving_cars].to_vec();
+        let moving_cars = &mut cars.clone()[0..num_moving_cars].to_vec();
         moving_cars.dedup_by(|a, b| a.0 == b.0);
     }
 

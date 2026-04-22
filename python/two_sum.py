@@ -21,6 +21,6 @@ class Solution(object):
                 return (num_map[complement], i)
             # map from num to its index
             num_map[n] = i
-            
+
 solution = Solution()
 print(solution.twoSum([2, 7, 11, 15], 9))

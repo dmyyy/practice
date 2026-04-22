@@ -52,9 +52,10 @@ fn tallest_billboard(rods: Vec<i32>) -> i32 {
 }
 */
 
-// TODO: do this correctly 
+// TODO: do this correctly
 
 fn tallest_billboard(rods: Vec<i32>) -> i32 {
     // explore possibility space
     // (diff, idx)
+    todo!()
 }

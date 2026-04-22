@@ -37,7 +37,7 @@ fn missing_number(nums: Vec<i32>) -> i32 {
     let mut sum = 0;
     let mut idx_sum = 0;
     for (i, n) in nums.iter().enumerate() {
-        idx_sum += (i + 1);
+        idx_sum += i + 1;
         sum += n;
     }
     idx_sum as i32 - sum

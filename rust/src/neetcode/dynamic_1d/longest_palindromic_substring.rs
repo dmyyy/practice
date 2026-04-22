@@ -17,25 +17,27 @@ Constraints:
 s consist of only digits and English letters.
 */
 
-fn longest_palindrome(s: String) -> String {
-    let chars = s.into_bytes();
+// TODO: not done yet
 
-    fn find_longest_palindrome(p: String, chars: &[u8], longest_palindrome: &mut &str) {
-        for i in 0..chars.len() {
-            if is_palindrome(p) && p.len() > longest_palindrome.len() {
-                *longest_palindrome = p;
-            }
+// fn longest_palindrome(s: String) -> String {
+//     let chars = s.into_bytes();
 
-            find_longest_palindrome(p + chars[0], &chars[1..], longest_palindrome);
-            find_longest_palindrome("", &chars[1..], longest_palindrome);
-        }
-    }
+//     fn find_longest_palindrome(p: String, chars: &[u8], longest_palindrome: &mut &str) {
+//         for i in 0..chars.len() {
+//             if is_palindrome(p) && p.len() > longest_palindrome.len() {
+//                 *longest_palindrome = p;
+//             }
 
-    let mut res = String::from("");
-    find_longest_palindrome("".to_owned(), chars.as_slice(), &mut res);
+//             find_longest_palindrome(p + chars[0], &chars[1..], longest_palindrome);
+//             find_longest_palindrome("", &chars[1..], longest_palindrome);
+//         }
+//     }
 
-    todo!()
-}
+//     let mut res = String::from("");
+//     find_longest_palindrome("".to_owned(), chars.as_slice(), &mut res);
+
+//     todo!()
+// }
 
 fn is_palindrome(p: &str) -> bool {
     p.chars().eq(p.chars().rev())

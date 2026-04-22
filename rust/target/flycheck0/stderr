@@ -1,52 +1,12 @@
-   0.003334875s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint: fingerprint error for practice v0.1.0 (/Users/dmy/code/practice/rust)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("practice", ["lib"], "/Users/dmy/code/practice/rust/src/lib.rs", Edition2024) }
-   0.003348000s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/dmy/code/practice/rust/target/debug/.fingerprint/practice-cc4c62b4d132e6f0/lib-practice`
-
-Caused by:
-    No such file or directory (os error 2)
-
-Stack backtrace:
-   0: std::backtrace::Backtrace::create
-   1: cargo_util::paths::read_bytes
-   2: cargo_util::paths::read
-   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
-   4: cargo::core::compiler::fingerprint::prepare_target
-   5: cargo::core::compiler::compile
-   6: <cargo::core::compiler::build_runner::BuildRunner>::compile
-   7: cargo::ops::cargo_compile::compile_ws
-   8: cargo::ops::cargo_compile::compile_with_exec
-   9: cargo::ops::cargo_compile::compile
-  10: cargo::commands::check::exec
-  11: <cargo::cli::Exec>::exec
-  12: cargo::main
-  13: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
-  14: std::rt::lang_start::<()>::{closure#0}
-  15: std::rt::lang_start_internal
-  16: _main
-   0.005327042s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint: fingerprint error for practice v0.1.0 (/Users/dmy/code/practice/rust)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("practice", ["lib"], "/Users/dmy/code/practice/rust/src/lib.rs", Edition2024) }
-   0.005330958s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/dmy/code/practice/rust/target/debug/.fingerprint/practice-9d90e0e3c28fd2d8/test-lib-practice`
-
-Caused by:
-    No such file or directory (os error 2)
-
-Stack backtrace:
-   0: std::backtrace::Backtrace::create
-   1: cargo_util::paths::read_bytes
-   2: cargo_util::paths::read
-   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
-   4: cargo::core::compiler::fingerprint::prepare_target
-   5: cargo::core::compiler::compile
-   6: <cargo::core::compiler::build_runner::BuildRunner>::compile
-   7: cargo::ops::cargo_compile::compile_ws
-   8: cargo::ops::cargo_compile::compile_with_exec
-   9: cargo::ops::cargo_compile::compile
-  10: cargo::commands::check::exec
-  11: <cargo::cli::Exec>::exec
-  12: cargo::main
-  13: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
-  14: std::rt::lang_start::<()>::{closure#0}
-  15: std::rt::lang_start_internal
-  16: _main
+   0.005920209s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint: stale: changed "/Users/dmy/code/practice/rust/src/neetcode/dynamic_1d/all_construct.rs"
+   0.005930542s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:           (vs) "/Users/dmy/code/practice/rust/target/debug/.fingerprint/practice-cc4c62b4d132e6f0/dep-lib-practice"
+   0.005935375s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1776896788, nanos: 499680729 } < FileTime { seconds: 1776896915, nanos: 42861774 }
+   0.005981792s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint: fingerprint dirty for practice v0.1.0 (/Users/dmy/code/practice/rust)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("practice", ["lib"], "/Users/dmy/code/practice/rust/src/lib.rs", Edition2024) }
+   0.005992459s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/Users/dmy/code/practice/rust/target/debug/.fingerprint/practice-cc4c62b4d132e6f0/dep-lib-practice", reference_mtime: FileTime { seconds: 1776896788, nanos: 499680729 }, stale: "/Users/dmy/code/practice/rust/src/neetcode/dynamic_1d/all_construct.rs", stale_mtime: FileTime { seconds: 1776896915, nanos: 42861774 } }))
+   0.006331084s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint: stale: changed "/Users/dmy/code/practice/rust/src/neetcode/dynamic_1d/all_construct.rs"
+   0.006334375s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:           (vs) "/Users/dmy/code/practice/rust/target/debug/.fingerprint/practice-9d90e0e3c28fd2d8/dep-test-lib-practice"
+   0.006335875s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1776896788, nanos: 499677979 } < FileTime { seconds: 1776896915, nanos: 42861774 }
+   0.006377750s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint: fingerprint dirty for practice v0.1.0 (/Users/dmy/code/practice/rust)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("practice", ["lib"], "/Users/dmy/code/practice/rust/src/lib.rs", Edition2024) }
+   0.006382459s  INFO prepare_target{force=false package_id=practice v0.1.0 (/Users/dmy/code/practice/rust) target="practice"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/Users/dmy/code/practice/rust/target/debug/.fingerprint/practice-9d90e0e3c28fd2d8/dep-test-lib-practice", reference_mtime: FileTime { seconds: 1776896788, nanos: 499677979 }, stale: "/Users/dmy/code/practice/rust/src/neetcode/dynamic_1d/all_construct.rs", stale_mtime: FileTime { seconds: 1776896915, nanos: 42861774 } }))
     Checking practice v0.1.0 (/Users/dmy/code/practice/rust)
-error: could not compile `practice` (lib) due to 9 previous errors; 40 warnings emitted
-warning: build failed, waiting for other jobs to finish...
-error: could not compile `practice` (lib test) due to 9 previous errors; 41 warnings emitted
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
