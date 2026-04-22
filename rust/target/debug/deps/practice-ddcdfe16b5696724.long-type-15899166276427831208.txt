@@ -1,1 +1,0 @@
-(Option<Box<merge_two_sorted_lists::ListNode>>, &mut Option<Box<merge_two_sorted_lists::ListNode>>)
