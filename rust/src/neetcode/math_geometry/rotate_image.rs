@@ -29,16 +29,29 @@ Output: [
 ]
 */
 
-fn rotate(matrix: Vec<Vec<u32>>) {
-    let n = matrix.len();
-    for i in 0..n {
-        // rotate n - 1 steps along the outside
+fn rotate(matrix: Vec<Vec<i32>>) {
+    // matrix[row][col]
+
+    let a = &mut matrix[0][0];
+    let b = &mut matrix[0][2];
+
+    matrix[0][2] = matrix[0][0];
+    
+    matrix[2][2] = matrix[0][];
+
+    for row in 0..matrix.len() {
+        for col in 0..matrix[0].len() {}
     }
 
-    for (i, row) in matrix.iter().enumerate() {
-        // rotate n - 1 steps along the outside
-        let temp = matrix[i][0];
+    // let n = matrix.len();
+    // for i in 0..n {
+    //     // rotate n - 1 steps along the outside
+    // }
 
-        // matrix[i][matrix[i].len()] = ;
-    }
+    // for (i, row) in matrix.iter().enumerate() {
+    //     // rotate n - 1 steps along the outside
+    //     let temp = matrix[i][0];
+
+    //     // matrix[i][matrix[i].len()] = ;
+    // }
 }

@@ -1,9 +1,9 @@
 // Hard solutions list
 // https://github.com/PavelSavchenkov/all-lc-hard-in-rust
 
-mod facebook;
-
+mod add_and_search_words_211;
 mod add_two_numbers_445;
+mod atoi_8;
 mod fibonacci_number_509;
 mod integer_to_english_words_273;
 mod lru_cache_146;

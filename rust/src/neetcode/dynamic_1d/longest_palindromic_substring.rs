@@ -17,6 +17,58 @@ Constraints:
 s consist of only digits and English letters.
 */
 
+// need to remember eq function on an iterator - can use it to compare iterators
+// if I ever want to do my 'static str shenanigans in a leetcode problem - JUST LEAK THE STRING
+// str::from_utf8 to convert &[u8] to &str
+
+// brute force solution w/o memo
+
+pub fn longest_palindrome(s: String) -> String {
+    fn longest_palindrome_helper(chars: &'static [u8], longest: &mut &'static str) {
+        if chars.len() <= longest.len() {
+            // cannot create a longer palindrome from remaining string
+            return;
+        }
+        for i in 1..=chars.len() {
+            if i > longest.len() && is_palindrome(&chars[0..i]) {
+                *longest = str::from_utf8(&chars[0..i]).unwrap();
+            }
+        }
+        longest_palindrome_helper(&chars[1..], longest);
+    }
+
+    let chars = s.leak().as_bytes();
+    let longest = &mut str::from_utf8(&chars[0..1]).unwrap();
+    longest_palindrome_helper(chars, longest);
+    longest.to_owned()
+}
+
+fn is_palindrome(chars: &[u8]) -> bool {
+    chars.iter().eq(chars.iter().rev())
+}
+
+// TODO: do with memo
+
+pub fn longest_palindrome2(s: String) -> String {
+    fn longest_palindrome_helper(chars: &'static [u8], longest: &mut &'static str) {
+        if chars.len() <= longest.len() {
+            // cannot create a longer palindrome from remaining string
+            return;
+        }
+        for i in 1..=chars.len() {
+            if i > longest.len() && is_palindrome(&chars[0..i]) {
+                *longest = str::from_utf8(&chars[0..i]).unwrap();
+            }
+        }
+        longest_palindrome_helper(&chars[1..], longest);
+    }
+
+    let chars = s.leak().as_bytes();
+    let longest = &mut str::from_utf8(&chars[0..1]).unwrap();
+    longest_palindrome_helper(chars, longest);
+    longest.to_owned()
+}
+
 // TODO: not done yet
 
 // fn longest_palindrome(s: String) -> String {
@@ -38,7 +90,3 @@ s consist of only digits and English letters.
 
 //     todo!()
 // }
-
-fn is_palindrome(p: &str) -> bool {
-    p.chars().eq(p.chars().rev())
-}
