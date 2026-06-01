@@ -12,9 +12,15 @@ class Solution(object):
         #         if (n1 + n2) == target:
         #             return (i, j)
 
+        # [3, 3]
+        # target = 6
+
         # create map: num -> index
         num_map = {}
         for (i, n) in enumerate(nums):
+        # for i in range(len(nums)):
+        #     num = nums[i]
+
             complement = target - n
             # if we've already seen the complement, return the pair
             if complement in num_map:
