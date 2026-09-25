@@ -29,15 +29,15 @@ Output: [
 ]
 */
 
-fn rotate(matrix: Vec<Vec<i32>>) {
+/* fn rotate(matrix: Vec<Vec<i32>>) {
     // matrix[row][col]
 
     let a = &mut matrix[0][0];
     let b = &mut matrix[0][2];
 
     matrix[0][2] = matrix[0][0];
-    
-    matrix[2][2] = matrix[0][];
+
+    matrix[2][2] = matrix[0][0];
 
     for row in 0..matrix.len() {
         for col in 0..matrix[0].len() {}
@@ -54,4 +54,4 @@ fn rotate(matrix: Vec<Vec<i32>>) {
 
     //     // matrix[i][matrix[i].len()] = ;
     // }
-}
+} */

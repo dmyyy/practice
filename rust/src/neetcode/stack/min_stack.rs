@@ -48,11 +48,7 @@ impl MinStack {
 
     fn push(&mut self, val: i32) {
         let min = if let Some(&(_, current_min)) = self.stack.last() {
-            if val < current_min {
-                val
-            } else {
-                current_min
-            }
+            if val < current_min { val } else { current_min }
         } else {
             val
         };

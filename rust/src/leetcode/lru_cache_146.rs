@@ -11,7 +11,7 @@ struct LRUCache {
     capacity: usize,
 }
 
-impl LRUCache {
+/* impl LRUCache {
     fn new(capacity: i32) -> Self {
         let capacity: usize = capacity as usize;
         Self {
@@ -38,4 +38,4 @@ impl LRUCache {
         self.map.insert(key, value);
         self.recent_keys.push(key);
     }
-}
+} */

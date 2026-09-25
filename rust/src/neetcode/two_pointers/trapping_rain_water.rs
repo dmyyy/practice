@@ -55,6 +55,10 @@ fn trap(height: Vec<i32>) -> i32 {
     //     }
     // }
 
+    // lets try to do trapping rain water without looking at the solution
+
+
+
     // ai provided solution
 
     if height.len() < 3 {
